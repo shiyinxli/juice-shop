@@ -16,4 +16,8 @@ jobs:
       - name: Run Semgrep
         uses: returntocorp/semgrep-action@v1
         with:
-          config: p/security-auditx
+          config: >
+            p/javascript
+            p/typescript
+            p/nodejs
+            p/owasp-top-ten
