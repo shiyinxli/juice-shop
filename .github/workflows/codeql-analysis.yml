@@ -35,10 +35,12 @@ jobs:
       uses: github/codeql-action/autobuild@v3
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-    - name: Find SARIF files 
-      run: find . -name "*.sarif"
-    # - name: Upload CodeQL SARIF
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: codeql-report 
-    #     path: ../results/*.sarif
+    - name: Copy SARIF report 
+      run: | 
+        mkdir sarif-results
+        cp ../results/*.sarif sarif-results/
+    - name: Upload CodeQL SARIF
+      uses: actions/upload-artifact@v4
+      with:
+        name: codeql-report 
+        path: sarif-results/*.sarif
